@@ -14,6 +14,7 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 });
 
 class App extends Component {
+  // Starting state of app
   state = {
     selected: {
       Processor: {
@@ -34,7 +35,7 @@ class App extends Component {
       }
     }
   };
-
+  // changes the state to the clicked item - this is an onChange after the click
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
@@ -44,6 +45,7 @@ class App extends Component {
   };
 
   render() {
+    // creates all selectable options
     const features = Object.keys(this.props.features).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const options = this.props.features[feature].map(item => {
@@ -66,6 +68,7 @@ class App extends Component {
       });
 
       return (
+        // Creates option categories
         <fieldset className="feature" key={featureHash}>
           <legend className="feature__name">
             <h3>{feature}</h3>
@@ -75,6 +78,7 @@ class App extends Component {
       );
     });
 
+    // Shopping cart creation
     const summary = Object.keys(this.state.selected).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const selectedOption = this.state.selected[feature];
@@ -90,13 +94,16 @@ class App extends Component {
       );
     });
 
+    // Shopping cart total
     const total = Object.keys(this.state.selected).reduce(
       (acc, curr) => acc + this.state.selected[curr].cost,
       0
     );
 
+    // page render
     return (
       <div className="App">
+        {/* Left side of site */}
         <header>
           <h1>ELF Computing | Laptops</h1>
         </header>
@@ -105,6 +112,7 @@ class App extends Component {
             <h2>Customize your laptop</h2>
             {features}
           </form>
+          {/* Right side of the site */}
           <section className="main__summary">
             <h2>Your cart</h2>
             {summary}
