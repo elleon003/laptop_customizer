@@ -20,4 +20,3 @@ export default class ShoppingCartItems extends Component {
     )
   }
 }
-// Shopping cart creation

@@ -12,7 +12,7 @@ export default class ShoppingCartDisplay extends Component {
           USCurrencyFormat={this.props.USCurrencyFormat} />
         <ShoppingCartTotal 
           selected={this.props.selected} 
-          USCurrencyFormat={USCurrencyFormat}/>
+          USCurrencyFormat={this.props.USCurrencyFormat}/>
       </section>
     )
   }
